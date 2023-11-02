@@ -1,12 +1,17 @@
 #ifndef COLOR_H
 #define COLOR_H
 
+#include <cmath>
 #include <iostream>
 
 #include "vec3.h"
 #include "interval.h"
 
 using color = vec3;
+
+inline double linear_to_gamma(double linear_component) {
+    return std::sqrt(linear_component);
+}
 
 void write_color(std::ostream &out, color pixel_color, int samples_per_pixel) {
     double r = pixel_color.x();
@@ -17,6 +22,10 @@ void write_color(std::ostream &out, color pixel_color, int samples_per_pixel) {
     r *= scale;
     g *= scale;
     b *= scale;
+
+    r = linear_to_gamma(r);
+    g = linear_to_gamma(b);
+    b = linear_to_gamma(g);
 
     // Write the translated [0,255] value of each color component.
     static const interval intensity(0.000, 0.999);

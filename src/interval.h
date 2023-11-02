@@ -1,6 +1,8 @@
 #ifndef INTERVAL_H
 #define INTERVAL_H
 
+extern const double infinity;
+
 class interval {
 public:
     double min, max;
