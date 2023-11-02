@@ -1,7 +1,7 @@
 SYSCONF_LINK = g++
-CPPFLAGS     = -Ilib/glm/ -Isrc/
+CPPFLAGS     = -Ilib/glm/ -Isrc/ -O3 -fopenmp
 LDFLAGS      = 
-LIBS         = -lm
+LIBS         = -lm -fopenmp
 
 BIN_DIR = bin
 TARGET  = main
